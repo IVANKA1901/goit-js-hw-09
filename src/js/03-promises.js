@@ -11,14 +11,15 @@ refs.input.addEventListener('submit', onHandleSubmit);
 
 function onHandleSubmit(e) {
   e.preventDefault();
-
-  const delay = e.target.elements.delay.value;
-  const step = e.target.elements.step.value;
+  const delay = Number.parseInt(e.target.elements.delay.value);
+  const step = Number.parseInt(e.target.elements.step.value);
   const amount = e.target.elements.amount.value;
   // console.log(delay, step, amount);
 
   for (let position = 1; position <= amount; position++) {
-    createPromise(position, delay)
+    let promDelay = delay + step * position;
+
+    createPromise(position, promDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`,

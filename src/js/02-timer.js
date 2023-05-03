@@ -37,7 +37,8 @@ let intervalId = null;
 function onBtnClick() {
   intervalId = setInterval(timer, 1000);
   refs.startBtn.disabled = true;
-  console.log(intervalId);
+  refs.dateTimeSelector.disabled = true;
+  refs.console.log(intervalId);
 }
 
 function timer() {
@@ -49,6 +50,7 @@ function timer() {
   if (deltaTime <= 0) {
     clearInterval(intervalId);
     refs.startBtn.disabled = false;
+    refs.dateTimeSelector.disabled = false;
   } else {
     const { days, hours, minutes, seconds } = convertMs(deltaTime);
     refs.days.textContent = addLeadingZero(days);
