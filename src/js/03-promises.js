@@ -16,9 +16,8 @@ function onHandleSubmit(e) {
   const amount = e.target.elements.amount.value;
   // console.log(delay, step, amount);
 
-  for (let position = 1; position <= amount; position++) {
+  for (let position = 0; position <= amount; position++) {
     let promDelay = delay + step * position;
-
     createPromise(position, promDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
